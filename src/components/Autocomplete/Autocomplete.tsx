@@ -78,10 +78,13 @@ const Autocomplete = ({ suggestions }: AutocompleteProps) => {
         onKeyDown={onKeyDown}
         className="h-12 w-64 shadow-md rounded-md border border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent px-4"
         aria-label="Autocomplete input"
+        aria-expanded={filteredSuggestions.length > 0}
+        aria-controls="suggestions-list"
         role="combobox"
       />
       {filteredSuggestions.length > 0 && (
         <ul
+          id="suggestions-list"
           className="absolute bg-white border border-blue-500 rounded-md shadow-lg mt-1 max-h-60 overflow-y-auto list-none p-2"
           onMouseLeave={() => setHighlightedIndex(-1)}
           role="listbox"
