@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import Autocomplete from './Autocomplete';
-import type { Meta, StoryObj } from '@storybook/react';
 
 export default {
   title: 'Components/Autocomplete',
