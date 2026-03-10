@@ -33,7 +33,7 @@ describe('Autocomplete', () => {
   });
 
   it('should display suggestions when input value changes', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw'/>);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     await waitFor(() => {
       const suggestionsList = screen.getByTestId('suggestions-list');
       expect(suggestionsList).toBeInTheDocument();
@@ -51,23 +51,23 @@ describe('Autocomplete', () => {
   });
 
   it('should not display suggestions if input length is less than 4', () => {
-    render(<Autocomplete {...defaultProps} inputValue='Dra' />);
+    render(<Autocomplete {...defaultProps} inputValue="Dra" />);
     const suggestionsList = screen.queryByTestId('suggestions-list');
     expect(suggestionsList).not.toBeInTheDocument();
   });
 
   it('should call handleInputChange when input value is 4 or more characters', () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
     fireEvent.change(input, { target: { value: 'Drawi' } });
     expect(defaultProps.handleInputChange).toHaveBeenCalledWith('drawi');
   });
 
   it('should highlight suggestions on arrow key navigation', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
     fireEvent.change(input, { target: { value: 'Drawi' } });
-    
+
     await waitFor(() => {
       const suggestionsList = screen.getByTestId('suggestions-list');
       expect(suggestionsList).toBeInTheDocument();
@@ -81,9 +81,9 @@ describe('Autocomplete', () => {
   });
 
   it('should clear suggestions on Escape key press', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
-    fireEvent.change(input, { target: { value: 'Drawi' }});
+    fireEvent.change(input, { target: { value: 'Drawi' } });
 
     await waitFor(() => {
       const suggestionsList = screen.getByTestId('suggestions-list');
@@ -94,7 +94,7 @@ describe('Autocomplete', () => {
   });
 
   it('should select suggestion on Enter key press', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Drawin' />);
+    render(<Autocomplete {...defaultProps} inputValue="Drawin" />);
     const input = screen.getByPlaceholderText('Enter word');
     fireEvent.change(input, { target: { value: 'Drawi' } });
 
@@ -109,7 +109,7 @@ describe('Autocomplete', () => {
   });
 
   it('should select the suggestion on mouse click', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
     fireEvent.change(input, { target: { value: 'Drawi' } });
 
@@ -124,7 +124,7 @@ describe('Autocomplete', () => {
   });
 
   it('should leave suggestions unchanged when any key other than ArrowDown, ArrowUp, Enter, or Escape is pressed', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
     fireEvent.change(input, { target: { value: 'Drawi' } });
 
@@ -137,7 +137,7 @@ describe('Autocomplete', () => {
   });
 
   it('should display the last suggestion when the ArrowUp key is pressed at the top of the list', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
     fireEvent.change(input, { target: { value: 'Drawi' } });
 
@@ -145,14 +145,16 @@ describe('Autocomplete', () => {
       const suggestionsList = screen.getByTestId('suggestions-list');
       expect(suggestionsList).toBeInTheDocument();
       fireEvent.keyDown(input, { key: 'ArrowUp' });
-      expect(suggestionsList.children[suggestionsList.children.length - 1]).toHaveClass('bg-sky-300');
+      expect(suggestionsList.children[suggestionsList.children.length - 1]).toHaveClass(
+        'bg-sky-300'
+      );
     });
   });
 
   it('should not highlight any suggestion when mouse leaves the suggestions list', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
-    fireEvent.change(input, { target: { value: 'Drawi' }});
+    fireEvent.change(input, { target: { value: 'Drawi' } });
 
     waitFor(() => {
       const suggestionsList = screen.getByTestId('suggestions-list');
@@ -165,9 +167,9 @@ describe('Autocomplete', () => {
   });
 
   it('should highlight the first suggestion when the ArrowDown key is pressed on the last suggestion', async () => {
-    render(<Autocomplete {...defaultProps} inputValue='Draw' />);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
     const input = screen.getByPlaceholderText('Enter word');
-    fireEvent.change(input, { target: { value: 'Drawi' }});
+    fireEvent.change(input, { target: { value: 'Drawi' } });
 
     waitFor(() => {
       const suggestionsList = screen.getByTestId('suggestions-list');
@@ -178,13 +180,11 @@ describe('Autocomplete', () => {
       expect(suggestionsList.children[1]).toHaveClass('bg-sky-300');
       fireEvent.keyDown(input, { key: 'ArrowDown' });
       expect(suggestionsList.children[0]).toHaveClass('bg-sky-300');
-    });    
+    });
   });
 
   it('should select suggestion when Enter is pressed on a list item', async () => {
-
-
-    render(<Autocomplete {...defaultProps} inputValue="Draw"/>);
+    render(<Autocomplete {...defaultProps} inputValue="Draw" />);
 
     const input = screen.getByPlaceholderText('Enter word');
     fireEvent.change(input, { target: { value: 'Drawi' } });
@@ -195,5 +195,4 @@ describe('Autocomplete', () => {
 
     expect(defaultProps.updateInputValue).toHaveBeenCalledWith('Drawing');
   });
-
 });

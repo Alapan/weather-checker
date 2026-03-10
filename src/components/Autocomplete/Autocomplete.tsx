@@ -13,7 +13,7 @@ const Autocomplete = ({
   updateInputValue,
   suggestions,
   handleInputChange,
-  label
+  label,
 }: AutocompleteProps) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
@@ -88,7 +88,7 @@ const Autocomplete = ({
       event.preventDefault();
       onSuggestionClick(filteredSuggestions[index]);
     }
-  }
+  };
 
   return (
     <>
