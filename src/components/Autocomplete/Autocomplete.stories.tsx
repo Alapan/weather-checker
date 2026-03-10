@@ -13,7 +13,7 @@ export default {
     },
     updateInputValue: {
       control: {
-        action: 'inputChange', 
+        action: 'inputChange',
       },
       description: 'Function to update the input value. It receives the new value as an argument.',
     },
@@ -27,10 +27,11 @@ export default {
     },
     handleInputChange: {
       control: {
-        action: 'inputChange', 
+        action: 'inputChange',
       },
-      description: 'Function to handle input changes. It receives the current input value as an argument.',
-    }
+      description:
+        'Function to handle input changes. It receives the current input value as an argument.',
+    },
   },
 } as Meta<typeof Autocomplete>;
 
@@ -60,7 +61,7 @@ export const Default: Story = {
         label={args.label || 'Enter word'}
       />
     );
-  }
+  },
 };
 
 export const Empty: Story = {
@@ -70,5 +71,5 @@ export const Empty: Story = {
     label: 'Enter city name',
     suggestions: [],
     handleInputChange: () => null,
-  } as AutocompleteProps
-}
+  } as AutocompleteProps,
+};
