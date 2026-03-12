@@ -1,12 +1,20 @@
 export interface WeatherApiResponse {
-	temperatureCelsius: number;
-	temperatureFahrenheit: number;
-	condition: string;
-	city: string;
-	humidity: number;
-	windSpeedKph: number;
-	windSpeedMph: number;
-	feelsLikeCelsius: number;
-	feelsLikeFahrenheit: number;
-	localTime: string;
-};
+  temperatureCelsius: number;
+  condition: string;
+  conditionCode: number;
+  city: string;
+  humidity: number;
+  windSpeedMph: number;
+  feelsLikeCelsius: number;
+  localTime: string;
+}
+
+export type WeatherStateType =
+  | 'RAIN'
+  | 'SUN'
+  | 'FOG'
+  | 'STORM'
+  | 'PARTIALLY_CLOUDY'
+  | 'CLOUDY'
+  | 'WIND'
+  | 'SNOW';
